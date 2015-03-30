@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<TITLE>Oracle Login</TITLE>
+</HEAD>
+
+<BODY>
+<!--This page is for login into the oracle-->
+<div id="image" style="background: url(theme.jpg) no-repeat; width: 100%; height: 100%; background-size: 100%;">
+
+<br><br><br><br><br><br><br><br>	
+
+<H1>
+<CENTER>Connect to Oracle
+<FORM NAME="LoginForm" ACTION="controller/oracleLogin.jsp" METHOD="post" >
+<P>Before connecting to the RIS, you need to connect to the oracle first.</P>
+</CENTER>
+
+</H1>
+
+<H2><center>
+<TABLE>
+
+<TR VALIGN=TOP ALIGN=LEFT>
+<TD><B><I>Oracle User ID:</I></B></TD>
+<TD><INPUT TYPE="text" NAME="SQLUSERID"><BR></TD>
+</TR>
+
+<TR VALIGN=TOP ALIGN=LEFT>
+<TD><B><I>Oracle Password:</I></B></TD>
+<TD><INPUT TYPE="password" NAME="SQLPASSWD"></TD>
+</TR>
+
+</TABLE>
+
+<BR>
+<INPUT TYPE="submit" NAME="Submit" VALUE="Connect">
+<input type = reset >
+</FORM>
+</center>
+</H2>
+
+<H3>
+<center>
+<br><br>
+<a href='view/userDocumentation.html' target='_blank'>Help</a>
+</CENTER>
+</div>
+</BODY>
+</HTML>

@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<TITLE>System Login</TITLE>
+</HEAD>
+
+<BODY>
+<!--This is the login page-->
+<div id="image" style="background: url(../theme.jpg) no-repeat; width: 100%; height: 100%; background-size: 100%;">
+<br><br><br><br><br><br><br><br>	
+
+<H1><CENTER>RIS System Login</CENTER></H1>
+
+<FORM NAME="LoginForm" ACTION="../controller/login.jsp" METHOD="post" >
+
+<P><CENTER>To login RIS, you need to enter a valid User Name with the cooresponding Password.</P>
+<TABLE>
+<TR VALIGN=TOP ALIGN=LEFT>
+<TD><B><I>User Name:</I></B></TD>
+<TD><INPUT TYPE="text" NAME="USERID" ><BR></TD>
+</TR>
+<TR VALIGN=TOP ALIGN=LEFT>
+<TD><B><I>Password:</I></B></TD>
+<TD><INPUT TYPE="password" NAME="PASSWD"></TD>
+</TR>
+</TABLE>
+<BR>
+<INPUT TYPE="submit" NAME="bSubmit" VALUE="LOGIN">
+<INPUT TYPE="reset">
+</FORM>
+<br><br>
+<a href='userDocumentation.html' target='_blank'>Help</a>
+</div>
+</CENTER>
+</BODY>
+</HTML>
