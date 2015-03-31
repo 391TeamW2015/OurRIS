@@ -47,7 +47,11 @@
 		        firstName= (request.getParameter("firstname"));
 		        lastName = (request.getParameter("lastname"));
 		        personid = (request.getParameter("personid"));
+	          try{
 		        personID= Integer.parseInt(personid);
+	          } catch (Exception ex) {
+	        	  out.println("<hr><center>" + ex.getMessage()+"teeeeeeeeeeeest" + "</center><hr>");
+	          }
 		        address  = (request.getParameter("address"));
 		        email    = (request.getParameter("emailid"));
 		        phone    = (request.getParameter("mobileno"));

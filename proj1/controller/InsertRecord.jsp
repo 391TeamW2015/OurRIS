@@ -10,8 +10,8 @@
 	if (request.getParameter(".submit") != null)
         {			
 		    String sqlname = (String)session.getAttribute("SQLUSERID");
-		    String sqlpwd =  (String)session.getAttribute("SQLPASSWD");
-			Integer rid      = (Integer)session.getAttribute("rid");
+		    String sqlpwd  = (String)session.getAttribute("SQLPASSWD");
+			Integer rid    = (Integer)session.getAttribute("rid");
 			
 			//get the user input from the login page
 			String patientId=  (request.getParameter("patientList")).trim();
@@ -21,11 +21,26 @@
 	        String testType =  (request.getParameter("testtype")).trim();
 	        String diagnosis=  (request.getParameter("diagnosis")).trim();
 	        String description=(request.getParameter("description")).trim();
-			int rec_id;
-        	//out.println("<p><CENTER>The username is "+userName+"</CENTER></p>");
+		    int rec_id;
+			
         	
         	java.util.Date myDate = new java.util.Date();
 	        java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
+	        
+	        /**
+        	out.println("<p><CENTER>sqlname = "+sqlname+"</CENTER></p>");
+        	out.println("<p><CENTER>sqlpswd = "+sqlpwd+"</CENTER></p>");
+        	out.println("<p><CENTER>rid = "+rid+"</CENTER></p>");
+	       */
+	       
+	        /**
+        	out.println("<p><CENTER>patientId = "+patientId+"</CENTER></p>");
+        	out.println("<p><CENTER>doctorId = "+doctorId+"</CENTER></p>");
+        	out.println("<p><CENTER>testType = "+testType+"</CENTER></p>");
+        	out.println("<p><CENTER>diagnosis = "+diagnosis+"</CENTER></p>");
+        	out.println("<p><CENTER>description = "+description+"</CENTER></p>");
+        	out.println("<p><CENTER>sqlDate = "+sqlDate+"</CENTER></p>");
+        	*/
 	        
 	        //establish the connection to the underlying database
         	Connection conn = null;
@@ -58,12 +73,16 @@
 	        //insert into radiology_record
         	try{
         		stmt = conn.createStatement();
-	    	    rset = stmt.executeQuery("SELECT rec_id.nextval from dual");
+        		//out.println("<p><CENTER>1 "+ "I am in this line" +"</CENTER></p>");
+	    	    rset = stmt.executeQuery("select record_id from radiology_record"); // I need to select how many a
+	    	    //out.println("<p><CENTER>2 "+ "I am in this line" +"</CENTER></p>");
 	    	    rset.next();
-	    	    rec_id = rset.getInt(1);
+	    	    //out.println("<p><CENTER>3 "+ "I am in this line" +"</CENTER></p>");
+	    	    rec_id = rset.getInt(1)+1;
+	    	    //out.println("<p><CENTER>4 "+ "I am in this line" +"</CENTER></p>");
 	    	    
-	    	    session.setAttribute("rec_id",rec_id);
-	    	    //out.println("<p><CENTER>rec_id: "+rec_id+"</CENTER></p>");
+	    	    session.setAttribute("rec_id = ",rec_id);
+	    	    out.println("<p><CENTER>rec_id: "+rec_id+"</CENTER></p>");
 	    	    
         		pstmt = conn.prepareStatement("INSERT INTO radiology_record (record_id,patient_id,doctor_id,radiologist_id,test_type,prescribing_date,test_date,diagnosis,description)"
         				  +"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -80,22 +99,25 @@
 
 		    	out.println("<div style='background: url(../theme.jpg) no-repeat; width: 100%; height: 100%; background-size: 100%;'>");
 		    	out.println("<BR><p><CENTER><b>Insert Successful!</b></CENTER></p>");
+		    	out.println("<BR><p><CENTER><b>Next, you are going to upload an image!</b></CENTER></p>");
 		    	out.println("<script language=javascript type=text/javascript>");
-		    	out.println("setTimeout("+"\"javascript:location.href='../view/uploading.html'\""+", 1000);");
+		    	out.println("setTimeout("+"\"javascript:location.href='../view/uploadImg.html'\""+", 1000);");
 		    	out.println("</script></div>");
         	}
 
 	        catch(Exception ex){
-	        	out.println("<div style='background: url(../theme/.jpg) no-repeat; width: 100%; height: 100%; background-size: 100%;'>");
-	        	out.println("<BR><p><CENTER>Insert Failed!</CENTER></p><br><br>");
-		        if ((ex.getMessage()).length() > 100)
+	        	//out.println("<div style='background: url(theme.jpg) no-repeat; width: 100%; height: 100%; background-size: 100%;'>");
+	        	//out.println("<BR><p><CENTER>Insert Failed!</CENTER></p><br><br>");
+		        if ((ex.getMessage()).length() > 100) {
 		        	out.println("<hr><center>" + (ex.getMessage()).substring(11,12+48) + "</center><hr>");
-	        	else
-	        		out.println("<hr><center>" + ex.getMessage() + "</center><hr>");
-		    	out.println("<script language=javascript type=text/javascript>");
-		    	out.println("setTimeout("+"\"javascript:location.href='uploadRecord.jsp'\""+", 2500);");
-		    	out.println("</script>");
-		        out.println("</div>");
+		        }
+	        	else {
+	        		out.println("<hr><center>" + ex.getMessage() + "</center><hr>"); 
+	        	}
+		    	//out.println("<script language=javascript type=text/javascript>");
+		    	//out.println("setTimeout("+"\"javascript:location.href='uploadRecord.jsp'\""+", 2500);");
+		    	//out.println("</script>");
+		        //out.println("</div>");
 		        conn.rollback();
             }
             try{

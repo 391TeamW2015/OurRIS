@@ -208,8 +208,9 @@
         	//display the result	        
 			out.println("<HTML><HEAD><TITLE>Uploading</TITLE></HEAD><BODY>");
 			out.println("<div style='background: url(../theme.jpg) no-repeat; width: 100%; height: 100%; background-size: 100%;'>");
-			out.println("<br><br><br><br><br><br><br><br><H1><CENTER>UPloading</CENTER></H1><br><br>");
-			out.println("<FORM ACTION='InsertRecord.jsp' METHOD='post'><CENTER>");
+			out.println("<br><br><br><br><br><H1><CENTER>Uploading</CENTER></H1><br>");
+			
+			out.println("<H2><FORM ACTION='insertRecord.jsp' METHOD='post'><CENTER>");
 			out.println("<table>");			
 			out.println("<tr><td>Patient ID & Name:</td><td colspan=2>");
 			int q = pidList.size();
@@ -217,7 +218,6 @@
         	for(int i = 0; i < q; i++)
         		out.println("<option value="+pidList.get(i)+">"+pidList.get(i)+" "+pnameList.get(i)+"</option>");
         	out.println("</select></td></tr>"); 
-        	
         	out.println("<tr><td>Doctor ID & Name:</td><td colspan=2>");
 			int w = didList.size();
         	out.println("<select name='doctorList'><option value='-1'>select a doctor..</option>");
@@ -229,9 +229,10 @@
         	out.println("<tr><td>Test Type:</td><td><input type=text name=testtype></td></tr>");
         	out.println("<tr><td>Diagnosis:</td><td><textarea style='resize:none' rows = 4 cols = 32 name=diagnosis maxlength=128></textarea></td></td>");
         	out.println("<tr><td>Description:</td><td><textarea style='resize:none' rows = 5 cols = 40 name=description maxlength=1024></textarea></td></tr>");
-			out.println("<tr><td ALIGN=CENTER COLSPAN=2><br><brs><input type='submit' name='.submit' value='Next'></td></tr></table>");
-			out.println("</FORM><br><br><br><FORM ACTION='../view/radiologist.html' METHOD='post'><INPUT TYPE='submit' NAME='ra_back' VALUE='Back'>");
-			out.println("<br><br><a href='../view/userDocumentation.html' target='_blank'>Help</a></FORM></div></CENTER></BODY></HTML>");
+			out.println("<tr><td ALIGN=CENTER COLSPAN=2><br><brs><input type='submit' name='.submit' value='Upload Medical Images'></td></tr></table></H2>");
+			
+			out.println("<H3><Center></FORM><br><br><br><FORM ACTION='../view/radiologist.html' METHOD='post'><INPUT TYPE='submit' NAME='ra_back' VALUE='Back'>");
+			out.println("<br><br><a href='../view/userDocumentation.html' target='_blank'>Help</a></FORM></div></CENTER></BODY></HTML></Center></H3>");
 			session.setAttribute("rid",rID);
 %>
 

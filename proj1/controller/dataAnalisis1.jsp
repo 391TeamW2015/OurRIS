@@ -12,14 +12,6 @@
 			String sqlname = (String)session.getAttribute("SQLUSERID");
 			String sqlpwd =  (String)session.getAttribute("SQLPASSWD");
 			
-	        //get the user input from the login page
-        	//String userName = (request.getParameter("USERID")).trim();
-	        //String passwd   = (request.getParameter("PASSWD")).trim();
-	        //session.setAttribute("USERID",userName);
-        	//out.println("<p><CENTER>Your input User Name is "+userName+"</CENTER></p>");
-        	//out.println("<p><CENTER>Your input password is "+passwd+"</CENTER></p>");
-
-
 	        //establish the connection to the underlying database
         	Connection conn = null;
 	
@@ -53,10 +45,7 @@
 	        ResultSet rset2 = null;
 	        
         	String sql = "select count(*) from pacs_images pp";
-        			//"select password from users where user_name = '"+userName+"'";
-        	//String type = "select class from users where user_name = '"+userName+"'";
-        	
-	        //out.println(sql);
+
         	try{
 	        	stmt = conn.createStatement();
 		        rset = stmt.executeQuery(sql);
@@ -71,12 +60,12 @@
 	        	basecase = (rset.getString(1)).trim();
         		//out.println(basecase);
 			out.println("<HTML><HEAD><TITLE>Data Analysis</TITLE></HEAD><BODY>");
-			out.println("<div id='image' style='background: url(47.jpg) no-repeat; width: 100%; height: 100%; background-size: 100%;'>");
+			out.println("<div id='image' style='background: url(../theme.jpg) no-repeat; width: 100%; height: 100%; background-size: 100%;'>");
 			out.println("<br><br><br><br><br><br><br><br><H1><CENTER>Data Analysis</CENTER></H1><CENTER><P></P>");
 			out.println("<br><br><p><b>Total number of pictures:"+basecase+"</b></p>");
-			out.println("<br><FORM ACTION='dataAnalysis1.html' METHOD='post' ><INPUT TYPE='submit' NAME='again' VALUE='Make Another analysis' style= 'width: 300; height: 30'></FORM>");
-			out.println("<FORM ACTION='dataAnalysis1.html' METHOD='post' ><INPUT TYPE='submit' VALUE='BACK' style= 'width: 300; height: 30'></FORM>");
-			out.println("<FORM ACTION='admin.html' METHOD='post' ><INPUT TYPE='submit' NAME='ad_back' VALUE='GO BACK TO ADMIN' style= 'width: 300; height: 30'><br><br><a href='userDocumentation.html' target='_blank'>Need help?</a></FORM></div></BODY></HTML>");
+			out.println("<br><FORM ACTION='../view/dataAnalysis1.html' METHOD='post' ><INPUT TYPE='submit' NAME='again' VALUE='Make Another analysis' style= 'width: 300; height: 30'></FORM>");
+			out.println("<FORM ACTION='../view/dataAnalysis.html' METHOD='post' ><INPUT TYPE='submit' VALUE='BACK' style= 'width: 300; height: 30'></FORM>");
+			out.println("<FORM ACTION='../view/administrator.html' METHOD='post' ><INPUT TYPE='submit' NAME='ad_back' VALUE='GO BACK TO ADMIN' style= 'width: 300; height: 30'><br><br><a href='../view/userDocumentation.html' target='_blank'>Help</a></FORM></div></BODY></HTML>");
            	try{
                 conn.close();
             }

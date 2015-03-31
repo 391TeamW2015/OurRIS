@@ -95,12 +95,12 @@
 	        		
 	        	//display the result
 		        if(passwd.equals(truepwd)){
-			        out.println("<p><CENTER>Your Login is Successful!</p>");
+			        out.println("<p><CENTER>Your Login Successful!</p>");
 			        out.println("Click the button to continue.");
 			        
 			        //transfer user to their class main page
 	        		if (userClass.equals("a")){
-	        			out.println("<form method=post action=admin.html>");
+	        			out.println("<form method=post action=../view/administrator.html>");
 	        			out.println("<input type=submit name=admin value=Continue>");
 	        			out.println("</CENTER></form>");
 	    		    	out.println("<script language=javascript type=text/javascript>");
@@ -108,7 +108,7 @@
 	    		    	out.println("</script>");
 	        		}
 	        		else if (userClass.equals("d")){
-	        			out.println("<form method=post action=doctor.html>");
+	        			out.println("<form method=post action=../view/doctor.html>");
 	        			out.println("<input type=submit name=admin value=Continue>");
 	        			out.println("</CENTER></form>");
 	    		    	out.println("<script language=javascript type=text/javascript>");
@@ -116,7 +116,7 @@
 	    		    	out.println("</script>");
 	        		}
 	        		else if (userClass.equals("r")){
-	        			out.println("<form method=post action=radiologist.html>");
+	        			out.println("<form method=post action=../view/radiologist.html>");
 	        			out.println("<input type=submit name=admin value=Continue>");
 	        			out.println("</CENTER></form>");
 	    		    	out.println("<script language=javascript type=text/javascript>");
@@ -124,7 +124,7 @@
 	    		    	out.println("</script>");
 	        		}
 	        		else if (userClass.equals("p")){
-	        			out.println("<form method=post action=patient.html>");
+	        			out.println("<form method=post action=../view/patient.html>");
 	        			out.println("<input type=submit name=admin value=Continue>");
 	        			out.println("</CENTER></form>");
 	    		    	out.println("<script language=javascript type=text/javascript>");
